@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taelkhal <taelkhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 16:15:34 by taelkhal          #+#    #+#             */
-/*   Updated: 2024/01/27 15:10:33 by taelkhal         ###   ########.fr       */
+/*   Created: 2024/01/29 17:53:59 by taelkhal          #+#    #+#             */
+/*   Updated: 2024/01/30 16:03:45 by taelkhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
 
-int main()
+
+#include <iostream>
+#include <cstdint>
+struct Data
 {
-    try
-    {
-        Bureaucrat b("b", 10);
-        Form f("f", 10, 1);
-        std::cout << b << std::endl;
-        std::cout << f << std::endl;
-        f.beSigned(b);
-        b.signForm(f);
-        std::cout << f << std::endl;
-    }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-}
+    unsigned int n;
+};
+
+class Serializer
+{
+    private:
+        Serializer();
+    public:
+        static uintptr_t serialize(Data* ptr);
+        static Data* deserialize(uintptr_t raw);
+};
+
+#endif

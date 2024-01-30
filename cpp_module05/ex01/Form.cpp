@@ -6,7 +6,7 @@
 /*   By: taelkhal <taelkhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:26:40 by taelkhal          #+#    #+#             */
-/*   Updated: 2024/01/18 16:17:03 by taelkhal         ###   ########.fr       */
+/*   Updated: 2024/01/27 15:54:05 by taelkhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Form::Form():name("default"), _signed(false),grade_s(150), grade_e(150)
         throw Form::GradeTooHighException();
 }
 
-Form::Form(std::string const name, bool _signed ,int const grade_s, int const grade_e):name(name), _signed(_signed),grade_s(grade_s), grade_e(grade_e)
+Form::Form(std::string const name, int const grade_s, int const grade_e):name(name), _signed(false),grade_s(grade_s), grade_e(grade_e)
 {
     if (grade_s > 150 || grade_e > 150)
         throw Form::GradeTooLowException();
@@ -72,16 +72,19 @@ void Form::beSigned(Bureaucrat bureaucrat)
 
 const char* Form::GradeTooHighException::what() const throw()
 {
-    return ("Garde too high");
+    return ("Form Garde too high");
 }
 
 const char* Form::GradeTooLowException::what() const throw()
 {
-    return ("Grade too low");
+    return ("Form Grade too low");
 }
 
 std::ostream &operator<<(std::ostream &out, Form const &form)
 {
-    out << form.getName() << " form is " << form.getSigned() << " and grade to sign is " << form.getGrade_s() << " and grade to execute is " << form.getGrade_e() << std::endl;
+    out << "name is : " << form.getName() << std::endl;
+    out << "sign is : " << form.getSigned() << std::endl;
+    out << "grade to sign is : " << form.getGrade_s() << std::endl;
+    out << "grade to execute is : " << form.getGrade_e() << std::endl;
     return (out);
 }

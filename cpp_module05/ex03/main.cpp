@@ -5,24 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: taelkhal <taelkhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 16:15:34 by taelkhal          #+#    #+#             */
-/*   Updated: 2024/01/27 15:10:33 by taelkhal         ###   ########.fr       */
+/*   Created: 2024/01/26 15:55:37 by taelkhal          #+#    #+#             */
+/*   Updated: 2024/01/27 16:22:24 by taelkhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "Bureaucrat.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
+#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 int main()
 {
     try
     {
-        Bureaucrat b("b", 10);
-        Form f("f", 10, 1);
-        std::cout << b << std::endl;
-        std::cout << f << std::endl;
-        f.beSigned(b);
-        b.signForm(f);
-        std::cout << f << std::endl;
+        Intern someRandomIntern;
+        AForm* rrf;
+        rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+        delete rrf;
     }
     catch (std::exception &e)
     {

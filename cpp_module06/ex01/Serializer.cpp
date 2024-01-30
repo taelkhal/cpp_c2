@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taelkhal <taelkhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 16:15:34 by taelkhal          #+#    #+#             */
-/*   Updated: 2024/01/27 15:10:33 by taelkhal         ###   ########.fr       */
+/*   Created: 2024/01/29 17:59:59 by taelkhal          #+#    #+#             */
+/*   Updated: 2024/01/29 18:20:16 by taelkhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "Serializer.hpp"
 
-int main()
+uintptr_t Serializer::serialize(Data* ptr)
 {
-    try
-    {
-        Bureaucrat b("b", 10);
-        Form f("f", 10, 1);
-        std::cout << b << std::endl;
-        std::cout << f << std::endl;
-        f.beSigned(b);
-        b.signForm(f);
-        std::cout << f << std::endl;
-    }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+    uintptr_t n;
+
+    n = reinterpret_cast<uintptr_t>(ptr);
+    return n;
+}
+
+Data* Serializer::deserialize(uintptr_t raw)
+{
+    Data *ptr;
+
+    ptr = reinterpret_cast<Data *>(raw);
+    return (ptr);
 }

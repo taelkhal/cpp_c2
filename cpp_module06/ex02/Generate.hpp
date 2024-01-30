@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Generate.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taelkhal <taelkhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 16:15:34 by taelkhal          #+#    #+#             */
-/*   Updated: 2024/01/27 15:10:33 by taelkhal         ###   ########.fr       */
+/*   Created: 2024/01/30 15:00:08 by taelkhal          #+#    #+#             */
+/*   Updated: 2024/01/30 17:39:44 by taelkhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#ifndef GENERATE_HPP
+#define GENERATE_HPP
 
-int main()
+
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
+#include <cstdlib>
+
+class Generate : public Base
 {
-    try
-    {
-        Bureaucrat b("b", 10);
-        Form f("f", 10, 1);
-        std::cout << b << std::endl;
-        std::cout << f << std::endl;
-        f.beSigned(b);
-        b.signForm(f);
-        std::cout << f << std::endl;
-    }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-}
+    public:
+        Generate();
+        Generate(Generate const &g);
+        Generate &operator=(Generate const &g);
+        ~Generate();
+};
+
+Base *generate(void);
+void identify(Base* p);
+void identify(Base& p);
+
+#endif

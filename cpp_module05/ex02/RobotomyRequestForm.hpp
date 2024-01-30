@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taelkhal <taelkhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 15:04:32 by taelkhal          #+#    #+#             */
-/*   Updated: 2024/01/29 14:50:49 by taelkhal         ###   ########.fr       */
+/*   Created: 2024/01/20 15:58:45 by taelkhal          #+#    #+#             */
+/*   Updated: 2024/01/29 14:50:45 by taelkhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
-#include <fstream>
 
-class ShrubberyCreationForm: public AForm
+class RobotomyRequestForm: public AForm
 {
     private:
         std::string target;
     public:
-        ShrubberyCreationForm();
-        ShrubberyCreationForm(std::string const target);
-        ShrubberyCreationForm(ShrubberyCreationForm const &copy);
-        ShrubberyCreationForm &operator=(ShrubberyCreationForm const &copy);
+        RobotomyRequestForm();
+        RobotomyRequestForm(std::string const target);
+        RobotomyRequestForm(RobotomyRequestForm const &copy);
+        RobotomyRequestForm &operator=(RobotomyRequestForm const &copy);
         void execute(Bureaucrat const & executor) const;
-        ~ShrubberyCreationForm();
+        ~RobotomyRequestForm();
 };
 
 #endif

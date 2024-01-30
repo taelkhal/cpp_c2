@@ -6,7 +6,7 @@
 /*   By: taelkhal <taelkhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 15:16:32 by taelkhal          #+#    #+#             */
-/*   Updated: 2024/01/14 16:05:31 by taelkhal         ###   ########.fr       */
+/*   Updated: 2024/01/27 16:16:06 by taelkhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,10 @@ int main()
     try
     {
         Bureaucrat b("b", 151);
-        std::cout << b;
-        b.incrementGrade();
-        std::cout << b;
-        b.incrementGrade();
-        std::cout << b;
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cout << e.what() << std::endl;
     }
     try
     {
@@ -40,7 +35,7 @@ int main()
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cout << e.what() << std::endl;
     }
     
     

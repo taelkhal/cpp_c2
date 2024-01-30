@@ -6,7 +6,7 @@
 /*   By: taelkhal <taelkhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:54:34 by taelkhal          #+#    #+#             */
-/*   Updated: 2024/01/19 18:22:22 by taelkhal         ###   ########.fr       */
+/*   Updated: 2024/01/26 15:37:59 by taelkhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ int Bureaucrat::getGrade() const
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-    return ("Grade too high");
+    return ("Bureaucrat Grade too high");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return ("Grade too low");
+    return ("Bureaucrat Grade too low");
 }
 
 Bureaucrat::~Bureaucrat()
@@ -88,21 +88,22 @@ std::ostream &operator<<(std::ostream &out, Bureaucrat const &bureaucrat)
 
 void Bureaucrat::signForm(AForm &form)
 {
+    form.beSigned(*this);
     if (form.getSigned() == true)
-        std::cout << name << " signed " << form.getSigned() << std::endl;
+        std::cout << name << " signed " << form.getName() << std::endl;
     else
-        std::cout << name << " couldn’t sign " << form.getSigned() << " because " << "garde too low" << std::endl;
+        std::cout << name << " couldn’t sign " << form.getName() << " because " << "garde too low" << std::endl;
 }
 
 void Bureaucrat::executeForm(AForm const &form)
 {
-    if (form.getSigned() == true)
+    try
     {
-        if (form.getGrade_e() > grade)
-        {
-            throw AForm::GradeTooLowException();
-        }
-        std::cout << name << " executed " << form.getSigned() << std::endl;
+        form.execute(*this);
+        std::cout << name << " executed " << form.getName() << std::endl;
     }
-    std::cout << name << "isn't signed" << std::endl;
+    catch (std::exception &e)
+    {
+        std::cout << name << " can't execute " << form.getName() << " because " << e.what() << std::endl;
+    }
 }

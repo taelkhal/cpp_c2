@@ -5,27 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: taelkhal <taelkhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 16:15:34 by taelkhal          #+#    #+#             */
-/*   Updated: 2024/01/27 15:10:33 by taelkhal         ###   ########.fr       */
+/*   Created: 2024/01/29 18:11:14 by taelkhal          #+#    #+#             */
+/*   Updated: 2024/01/29 18:41:31 by taelkhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "Serializer.hpp"
 
 int main()
 {
-    try
-    {
-        Bureaucrat b("b", 10);
-        Form f("f", 10, 1);
-        std::cout << b << std::endl;
-        std::cout << f << std::endl;
-        f.beSigned(b);
-        b.signForm(f);
-        std::cout << f << std::endl;
-    }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+    Data *ptr = new Data;
+    ptr->n = 19;
+    std::cout << ptr->n << std::endl;
+    uintptr_t p = Serializer::serialize(ptr);
+    std::cout << p << std::endl;
+    // std::cout << ptr << std::endl;
+    Data *ptr1 = Serializer::deserialize(p);
+    std::cout << ptr1 << std::endl;
 }

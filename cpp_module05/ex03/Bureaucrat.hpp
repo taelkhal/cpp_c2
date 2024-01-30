@@ -5,16 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: taelkhal <taelkhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 15:14:37 by taelkhal          #+#    #+#             */
-/*   Updated: 2024/01/27 15:03:18 by taelkhal         ###   ########.fr       */
+/*   Created: 2024/01/19 15:50:27 by taelkhal          #+#    #+#             */
+/*   Updated: 2024/01/29 14:51:18 by taelkhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include <iostream>
-# include <string>
+#include "AForm.hpp"
+#include <iostream>
+
+
+class AForm;
 
 class Bureaucrat
 {
@@ -41,6 +44,8 @@ class Bureaucrat
         };
         void incrementGrade();
         void decrementGrade();
+        void signForm(AForm &form);
+        void executeForm(AForm const &form);
 };
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &bureaucrat);
