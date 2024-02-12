@@ -5,24 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: taelkhal <taelkhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 17:08:41 by taelkhal          #+#    #+#             */
-/*   Updated: 2024/02/12 18:24:53 by taelkhal         ###   ########.fr       */
+/*   Created: 2024/02/12 18:43:00 by taelkhal          #+#    #+#             */
+/*   Updated: 2024/02/12 18:51:21 by taelkhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "easyfind.hpp"
+#include "MutantStack.hpp"
 
 int main()
 {
-    std::vector<int> arr(5);
-
-    arr.push_back(-4);
-    arr.push_back(5);
-    arr.push_back(1);
-    arr.push_back(3);
-    arr.push_back(0);
-    easyfind(arr, 15);
-    easyfind(arr, 99);
-    easyfind(arr, 3);
-    easyfind(arr, -4);
+    MutantStack<int>mstack;
+    mstack.push(5);
+    mstack.push(17);
+    std::cout << mstack.top() << std::endl;
+    mstack.pop();
+    std::cout << mstack.size() << std::endl;
+    mstack.push(3);
+    mstack.push(5);
+    mstack.push(737);
+    //[...]
+    mstack.push(0);
+    MutantStack<int>::iterator it = mstack.begin();
+    MutantStack<int>::iterator ite = mstack.end();
+    ++it;
+    --it;
+    while (it != ite)
+    {
+    std::cout << *it << std::endl;
+    ++it;
+    }
+    std::stack<int> s(mstack);
+    return 0;
 }

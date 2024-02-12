@@ -6,7 +6,7 @@
 /*   By: taelkhal <taelkhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:02:32 by taelkhal          #+#    #+#             */
-/*   Updated: 2024/02/08 17:26:28 by taelkhal         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:18:35 by taelkhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,14 @@ template <typename T>
 void easyfind(T &arr, int nb)
 {
     typename T::iterator i;
-    int index = -1;
 
-    for (i = arr.begin(); i != arr.end(); i++)
+    i = std::find(arr.begin(), arr.end(), nb);
+    if (i != arr.end())
     {
-        index++;
-        if (*i == nb)
-        {
-            std::cout << nb << " found in index " << index << std::endl;
-            break ;
-        }
+        std::cout << nb << " found"<< std::endl;
+        return ;
     }
-    if (i == arr.end())
-        std::cout << nb << " not found" << std::endl;
+    std::cout << nb << " not found" << std::endl;
 }
-
 
 #endif

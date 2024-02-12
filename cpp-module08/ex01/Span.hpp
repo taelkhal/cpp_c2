@@ -6,7 +6,7 @@
 /*   By: taelkhal <taelkhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:24:11 by taelkhal          #+#    #+#             */
-/*   Updated: 2024/02/09 18:47:06 by taelkhal         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:40:51 by taelkhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include <vector>
+#include <iterator>
+#include <algorithm>
 
 class Span
 {
@@ -36,6 +38,14 @@ class Span
 					return ("Found Duplicated Number");
 				}
 		};
+		class OutOfRange: public std::exception
+		{
+			public:
+				const char *what() const throw()
+				{
+					return ("Out Of Rnage");
+				}
+		};
 		int shortestSpan();
 		int longestSpan();
 		class ErrorSpan: public std::exception
@@ -43,9 +53,10 @@ class Span
 			public:
 				const char *what() const throw()
 				{
-					return ("No Number Or Found Just One Number");
+					return ("No Numbers Or Found Just One Number");
 				}
 		};
+		void addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 };
 
 
