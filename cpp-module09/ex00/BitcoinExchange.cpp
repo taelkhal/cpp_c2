@@ -6,7 +6,7 @@
 /*   By: taelkhal <taelkhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:02:38 by taelkhal          #+#    #+#             */
-/*   Updated: 2024/02/16 18:54:07 by taelkhal         ###   ########.fr       */
+/*   Updated: 2024/02/17 16:29:41 by taelkhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void BitcoinExchange::get_value(std::string key, float p)
     if (it != data.end())
     {
         float value = it->second;
-        std::cout << key << " => " << p << " = " << value * p << std::endl;
+        std::cout <<  key << " => " << p << " = " << std::fixed << std::setprecision(2) << value * p << std::endl;
     }
     else
     {
@@ -106,7 +106,7 @@ void BitcoinExchange::get_value(std::string key, float p)
         {
             --it;
             float c_value = it->second;
-            std::cout << key << " => " << p << " = " << c_value * p << std::endl;
+            std::cout << key << " => " << p << " = " << std::fixed << std::setprecision(2) << c_value * p <<  std::endl;
         }
     }
 }
