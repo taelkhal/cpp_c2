@@ -6,7 +6,7 @@
 /*   By: taelkhal <taelkhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 14:25:20 by taelkhal          #+#    #+#             */
-/*   Updated: 2024/02/19 18:37:12 by taelkhal         ###   ########.fr       */
+/*   Updated: 2024/02/20 01:52:39 by taelkhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ void RPN::run_rpn(std::string str)
     {
         if (s[i] == ' ')
             continue;
+        if (str[i] == '(' || str[s.size() - 1] == ')')
+        {
+            std::cout << "Error" << std::endl;
+            exit (0);
+        }
         if ((s[i] >= '0' && s[i] <= '9') || s[i] == '*' || s[i] == '-' || s[i] == '+' || s[i] == '/')
         {
             if (s[i] >= '0' && s[i] <= '9')
@@ -47,40 +52,77 @@ void RPN::run_rpn(std::string str)
             }
             if (s[i] == '*')
             {
-                nb2 = rpn.top();
-                rpn.pop();
-                nb3 = rpn.top();
-                rpn.pop();
-                rpn.push(nb3 * nb2);
+                if(rpn.size() == 2  || rpn.size() == 3)
+                {
+                    nb2 = rpn.top();
+                    rpn.pop();
+                    nb3 = rpn.top();
+                    rpn.pop();
+                    rpn.push(nb3 * nb2);
+                }
+                else
+                {
+                    std::cout << "Error" << std::endl;
+                    exit (0);
+                }
             }
             if (s[i] == '-')
             {
-                nb2 = rpn.top();
-                rpn.pop();
-                nb3 = rpn.top();
-                rpn.pop();
-                rpn.push(nb3 - nb2);
+                if (rpn.size() == 2 || rpn.size() == 3)
+                {
+                    nb2 = rpn.top();
+                    rpn.pop();
+                    nb3 = rpn.top();
+                    rpn.pop();
+                    rpn.push(nb3 - nb2);
+                }
+                else
+                {
+                    while (!rpn.empty())
+                    {
+                        std::cout << rpn.top() << std::endl;
+                        rpn.pop();
+                    }
+                    std::cout << "Error" << std::endl;
+                    exit (0);
+                }
             }
             if (s[i] == '+')
             {
-                nb2 = rpn.top();
-                rpn.pop();
-                nb3 = rpn.top();
-                rpn.pop();
-                rpn.push(nb3 + nb2);
+                if (rpn.size() == 2 || rpn.size() == 3)
+                {
+                    nb2 = rpn.top();
+                    rpn.pop();
+                    nb3 = rpn.top();
+                    rpn.pop();
+                    rpn.push(nb3 + nb2);
+                }
+                else
+                {
+                    std::cout << "Error" << std::endl;
+                    exit (0);
+                }
             }
             if(s[i] == '/')
             {
-                nb2 = rpn.top();
-                rpn.pop();
-                nb3 = rpn.top();
-                if (nb3 == 0)
+                if (rpn.size() == 2 || rpn.size() == 3)
                 {
-                    std::cout << "Error: divide by zero" << std::endl;
+                    nb2 = rpn.top();
+                    rpn.pop();
+                    nb3 = rpn.top();
+                    if (nb3 == 0)
+                    {
+                        std::cout << "Error: divide by zero" << std::endl;
+                        exit (0);
+                    }
+                    rpn.pop();
+                    rpn.push(nb3 / nb2);
+                }
+                else
+                {
+                    std::cout << "Error" << std::endl;
                     exit (0);
                 }
-                rpn.pop();
-                rpn.push(nb3 / nb2);
             }
         }
         else
